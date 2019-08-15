@@ -12,8 +12,6 @@
 		6670A72822779C3200DA1B90 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670A72722779C3200DA1B90 /* ViewController.m */; };
 		6670A72D22779C3400DA1B90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6670A72B22779C3400DA1B90 /* Main.storyboard */; };
 		6670A73022779C3400DA1B90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670A72F22779C3400DA1B90 /* main.m */; };
-		6670A73B22779C3400DA1B90 /* ChessTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670A73A22779C3400DA1B90 /* ChessTests.m */; };
-		6670A74622779C3400DA1B90 /* Chess_UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670A74522779C3400DA1B90 /* Chess_UITests.m */; };
 		6670A75C22779D9700DA1B90 /* Bitboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A75A22779D9700DA1B90 /* Bitboard.cpp */; };
 		6670A76422779E4A00DA1B90 /* ChessController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A76222779E4A00DA1B90 /* ChessController.cpp */; };
 		6670A76A22779E9A00DA1B90 /* ChessGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A76822779E9A00DA1B90 /* ChessGame.cpp */; };
@@ -69,12 +67,8 @@
 		6670A72F22779C3400DA1B90 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6670A73122779C3400DA1B90 /* Chess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chess.entitlements; sourceTree = "<group>"; };
 		6670A73622779C3400DA1B90 /* ChessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6670A73A22779C3400DA1B90 /* ChessTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChessTests.m; sourceTree = "<group>"; };
-		6670A73C22779C3400DA1B90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6670A74122779C3400DA1B90 /* ChessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6670A74522779C3400DA1B90 /* Chess_UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chess_UITests.m; sourceTree = "<group>"; };
-		6670A74722779C3400DA1B90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6670A75922779D7F00DA1B90 /* Bitboard_h.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Bitboard_h.hpp; path = Chess_Game/types/Bitboard_h.hpp; sourceTree = SOURCE_ROOT; };
+		6670A75922779D7F00DA1B90 /* Bitboard_h.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Bitboard_h.hpp; path = Chess/Types/Bitboard_h.hpp; sourceTree = SOURCE_ROOT; };
 		6670A75A22779D9700DA1B90 /* Bitboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bitboard.cpp; sourceTree = "<group>"; };
 		6670A75B22779D9700DA1B90 /* Bitboard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bitboard.hpp; sourceTree = "<group>"; };
 		6670A75E22779DB000DA1B90 /* PiecesAndSquares.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PiecesAndSquares.hpp; sourceTree = "<group>"; };
@@ -147,8 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				6670A71B22779C3200DA1B90 /* Chess */,
-				6670A73922779C3400DA1B90 /* ChessTests */,
-				6670A74422779C3400DA1B90 /* ChessUITests */,
 				6670A71A22779C3200DA1B90 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -178,24 +170,6 @@
 				6670A73122779C3400DA1B90 /* Chess.entitlements */,
 			);
 			path = Chess;
-			sourceTree = "<group>";
-		};
-		6670A73922779C3400DA1B90 /* ChessTests */ = {
-			isa = PBXGroup;
-			children = (
-				6670A73A22779C3400DA1B90 /* ChessTests.m */,
-				6670A73C22779C3400DA1B90 /* Info.plist */,
-			);
-			path = ChessTests;
-			sourceTree = "<group>";
-		};
-		6670A74422779C3400DA1B90 /* ChessUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6670A74522779C3400DA1B90 /* Chess_UITests.m */,
-				6670A74722779C3400DA1B90 /* Info.plist */,
-			);
-			path = ChessUITests;
 			sourceTree = "<group>";
 		};
 		6670A75322779C7A00DA1B90 /* Data */ = {
@@ -475,7 +449,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6670A73B22779C3400DA1B90 /* ChessTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +456,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6670A74622779C3400DA1B90 /* Chess_UITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

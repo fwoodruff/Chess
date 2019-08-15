@@ -1,14 +1,13 @@
 //
-//  chess_game.hpp
-//  Chess_Engine
+//  ChessController.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 13/04/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef chess_game_hpp
-#define chess_game_hpp
-
+#ifndef ChessController_hpp
+#define ChessController_hpp
 
 #include "ChessMove.hpp"
 #include "Bitboard.hpp"
@@ -92,4 +91,4 @@ namespace chs {
     };
 }
 
-#endif /* chess_game_hpp */
+#endif /*  ChessController_hpp */

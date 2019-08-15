@@ -1,14 +1,13 @@
 //
-//  tree_search.hpp
-//  ChessGameA
+//  TreeSearch.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 12/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef tree_search_hpp
-#define tree_search_hpp
-
+#ifndef TreeSearch_hpp
+#define TreeSearch_hpp
 
 #include "NaiveChessPosition.hpp"
 #include <array>
@@ -80,10 +79,5 @@ namespace  chs {
         }
         return {value,complete};
     }
-    
-    
-    
-    
-    
 }
-#endif /* tree_search_hpp */
+#endif /* TreeSearch_hpp */

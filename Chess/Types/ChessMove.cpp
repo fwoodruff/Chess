@@ -1,6 +1,6 @@
 //
-//  move.cpp
-//  Chess_Engine
+//  ChessMove.cpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 30/03/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
@@ -69,7 +69,4 @@ namespace chs {
         }
         return s;
     }
-
-    
-
 }

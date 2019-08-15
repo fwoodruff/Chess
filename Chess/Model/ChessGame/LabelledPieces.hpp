@@ -1,13 +1,13 @@
 //
-//  identityboard.hpp
-//  ChessGameA
+//  LabelledPieces.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 20/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef identityboard_hpp
-#define identityboard_hpp
+#ifndef LabelledPieces_hpp
+#define LabelledPieces_hpp
 
 #include <array>
 #include <cstdint>
@@ -65,4 +65,4 @@ namespace chs {
         return board;
     }
 }
-#endif /* identityboard_hpp */
+#endif /* LabelledPieces_hpp */

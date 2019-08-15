@@ -1,13 +1,13 @@
 //
-//  pumped_functor.hpp
+//  Oracle.hpp
 //  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 03/03/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef pump_functor_hpp
-#define pump_functor_hpp
+#ifndef Oracle_hpp
+#define Oracle_hpp
 
 #include <stdio.h>
 #include <iostream>
@@ -22,11 +22,6 @@
 #include <condition_variable>
 
 namespace frd {
-    
-    
-    
-    
-    
     /**
      
      Construct this functor object with:
@@ -213,4 +208,4 @@ namespace frd {
     };
 }
 
-#endif /* pumped_functor_hpp */
+#endif /* Oracle_hpp */

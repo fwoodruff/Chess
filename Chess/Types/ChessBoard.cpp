@@ -1,6 +1,6 @@
 //
-//  rawboard.cpp
-//  ChessGameA
+//  ChessBoard.cpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 19/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.

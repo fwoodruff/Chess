@@ -1,13 +1,13 @@
 //
-//  rawboard.hpp
-//  ChessGameA
+//  ChessBoard.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 19/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef rawboard_hpp
-#define rawboard_hpp
+#ifndef ChessBoard_hpp
+#define ChessBoard_hpp
 
 #include "PiecesAndSquares.hpp"
 #include "Bitboard.hpp"
@@ -52,4 +52,4 @@ namespace chs {
     }
 }
 
-#endif /* rawboard_hpp */
+#endif /* ChessBoard_hpp */

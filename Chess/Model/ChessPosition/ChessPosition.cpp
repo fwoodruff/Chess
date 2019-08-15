@@ -1,6 +1,6 @@
 //
-//  midboard.cpp
-//  ChessGameA
+//  ChessPosition.cpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 15/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
@@ -10,8 +10,6 @@
 #include "TreeSearch.hpp"
 #include <vector>
 #include <iostream>
-
-
 
 namespace chs {
     /*

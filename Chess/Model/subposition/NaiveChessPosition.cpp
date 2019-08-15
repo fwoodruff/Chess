@@ -1,13 +1,12 @@
 //
 //  subposition.cpp
-//  ChessGameA
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 12/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
 #include "NaiveChessPosition.hpp"
-
 
 namespace chs {
     NaiveChessPosition NaiveChessPosition::makePosition() noexcept {
@@ -63,6 +62,4 @@ namespace chs {
             (pieces[i][bishop].occupancy()+pieces[i][knight].occupancy())<=1;
         return rp>1;
     }
-    
-
 }

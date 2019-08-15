@@ -1,4 +1,12 @@
 //
+//  ChessGame.hpp
+//  Chess
+//
+//  Created by Frederick Benjamin Woodruff on 30/03/2019.
+//  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
+//
+
+// TODO
 // Make a map to the pieces in the UI and then use pointers to drag pieces around.
 // For the moment just refresh board after move
 //

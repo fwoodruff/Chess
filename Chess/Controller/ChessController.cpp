@@ -1,3 +1,10 @@
+//
+//  ChessController.cpp
+//  Chess
+//
+//  Created by Frederick Benjamin Woodruff on 13/04/2019.
+//  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
+//
 
 #include "ChessController.hpp"
 #include <stdio.h>

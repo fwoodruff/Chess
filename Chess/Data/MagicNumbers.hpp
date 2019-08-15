@@ -1,13 +1,13 @@
 //
-//  magic_numbers.hpp
-//  Chess_Engine
+//  MagicNumbers.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 30/03/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef magic_numbers_hpp
-#define magic_numbers_hpp
+#ifndef MagicNumbers_hpp
+#define MagicNumbers_hpp
 
 
 #include "PiecesAndSquares.hpp"
@@ -184,4 +184,4 @@ namespace chs {
     }
 }
 
-#endif /* magic_numbers_hpp */
+#endif /* MagicNumbers_hpp */

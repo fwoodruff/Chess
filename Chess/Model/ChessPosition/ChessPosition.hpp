@@ -1,13 +1,13 @@
 //
-//  midboard.hpp
-//  ChessGameA
+//  ChessPosition.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 15/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef midboard_hpp
-#define midboard_hpp
+#ifndef ChessPosition_hpp
+#define ChessPosition_hpp
 
 #include "Bitboard.hpp"
 #include "PiecesAndSquares.hpp"
@@ -68,8 +68,6 @@ namespace chs {
         //static e_pieceType missing(const ChessPosition& this_position, const ChessPosition& other_position) const noexcept;
         // remove this
     };
-
 }
 
-
-#endif /* midboard_hpp */
+#endif /* ChessPosition_hpp */

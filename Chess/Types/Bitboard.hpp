@@ -1,13 +1,13 @@
 //
-//  bitboard_impl.hpp
-//  Chess_Engine
+//  Bitboard.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 30/03/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef bitboard_impl_h
-#define bitboard_impl_h
+#ifndef Bitboard_h
+#define Bitboard_h
 
 #include "Bitboard_h.hpp"
 #include <type_traits>
@@ -104,4 +104,4 @@ namespace chs {
 
 }
 
-#endif /* bitboard_impl_h */
+#endif /* bitboard_h */

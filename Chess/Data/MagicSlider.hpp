@@ -1,13 +1,13 @@
 //
-//  magic_slider.hpp
-//  Chess_Engine
+//  MagicSlider.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 30/03/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef magic_slider_hpp
-#define magic_slider_hpp
+#ifndef MagicSlider_hpp
+#define MagicSlider_hpp
 
 #include "MagicNumbers.hpp"
 #include "Masks.hpp"
@@ -98,4 +98,4 @@ namespace chs {
 }
 
 
-#endif /* magic_slider_hpp */
+#endif /* MagicSlider_hpp */

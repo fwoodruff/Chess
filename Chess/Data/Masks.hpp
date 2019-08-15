@@ -1,13 +1,13 @@
 //
-//  masks.hpp
-//  Chess_Engine
+//  Masks.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 30/03/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef masks_hpp
-#define masks_hpp
+#ifndef Masks_hpp
+#define Masks_hpp
 
 #include "PiecesAndSquares.hpp"
 #include "Bitboard.hpp"
@@ -130,4 +130,4 @@ namespace chs {
     }();
 }
 
-#endif /* masks_hpp */
+#endif /* Masks_hpp */

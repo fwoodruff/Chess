@@ -1,7 +1,6 @@
-
 //
-//  identityboard.cpp
-//  ChessGameA
+//  LabelledPieces.cpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 20/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
@@ -14,9 +13,6 @@
 #include <iostream>
 
 namespace chs {
-
-    
-    
     void LabelledPieces::performMove(Move move) {
         
         moving_={};

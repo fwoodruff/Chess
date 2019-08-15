@@ -1,6 +1,6 @@
 //
 //  subposition_header.hpp
-//  ChessGameA
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 12/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.

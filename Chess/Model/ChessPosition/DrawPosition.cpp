@@ -1,6 +1,6 @@
 //
-//  position_draw.cpp
-//  Chess_Engine
+//  DrawPosition.cpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 30/03/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
@@ -12,7 +12,6 @@
 #include <unordered_map>
 
 namespace chs {
-
     std::string ChessPosition::drawBoard() const {
         std::string s = "";
         for(int i=0;i<c_maxRank;i++) {

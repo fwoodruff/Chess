@@ -1,14 +1,13 @@
 //
-//  subposition_movelist.hpp
-//  ChessGameA
+//  Movelist.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 12/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef subposition_movelist_hpp
-#define subposition_movelist_hpp
-
+#ifndef Movelist_hpp
+#define Movelist_hpp
 
 #include "Bitboard.hpp"
 #include "ChessMove.hpp"
@@ -192,4 +191,4 @@ namespace chs {
     }
 }
 
-#endif /* subposition_movelist_hpp */
+#endif /* Movelist_hpp */

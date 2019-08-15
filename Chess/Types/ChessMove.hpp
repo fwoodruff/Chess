@@ -1,19 +1,15 @@
 //
-//  move.hpp
-//  Chess_Engine
+//  ChessMove.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 30/03/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef move_hpp
-#define move_hpp
+#ifndef ChessMove_hpp
+#define ChessMove_hpp
 
 #include "PiecesAndSquares.hpp"
-#include <stdio.h>
-#include <string>
-#include <sstream>
-#include <iostream>
 
 namespace chs {struct Move;}
 
@@ -100,7 +96,7 @@ namespace chs {
     template<> constexpr auto kingsideCastle<white> = Move(e1, g1,king, e_flagType::OO );
     template<> constexpr auto queensideCastle<black> = Move(e8, c8,king, e_flagType::OOO);
     template<> constexpr auto kingsideCastle<black> = Move(e8, g8,king, e_flagType::OO );
-    constexpr const static auto c_resignMove = Move(a8,a8,king,e_flagType::resignMove); // bring these inside move class
+    constexpr const static auto c_resignMove = Move(a8,a8,king,e_flagType::resignMove);
     constexpr const static auto c_takeDrawMove = Move(a8,a8,king,e_flagType::takeDraw);
     constexpr const static auto c_nullMove = Move(a8,a8,king, e_flagType::normalMove);
     constexpr const static auto c_terminalMove = Move(a8,a8,king, e_flagType::takingMove);
@@ -108,4 +104,4 @@ namespace chs {
     constexpr const static auto c_nullQMove = QMove(c_nullMove,0);
 }
 
-#endif /* move_hpp */
+#endif /* ChessMove_hpp */

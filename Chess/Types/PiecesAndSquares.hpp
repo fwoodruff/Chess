@@ -1,7 +1,13 @@
+//
+//  PiecesAndSquares.hpp
+//  Chess
+//
+//  Created by Frederick Benjamin Woodruff on 30/03/2019.
+//  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
+//
 
-
-#ifndef types_hpp
-#define types_hpp
+#ifndef PiecesAndSquares_hpp
+#define PiecesAndSquares_hpp
 
 #include <stdio.h>
 #include <array>
@@ -28,8 +34,6 @@ namespace chs {
 
 
     enum e_pieceType : unsigned char {king, queen, rook, bishop, knight, pawn};
-
-
 
     enum e_boardSquare : unsigned char {
         a8, b8, c8, d8, e8, f8, g8, h8,
@@ -116,4 +120,4 @@ namespace chs {
     } 
 }
 
-#endif /* types_hpp */
+#endif /* PiecesAndSquares_hpp */

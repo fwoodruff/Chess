@@ -1,6 +1,6 @@
 //
-//  tree_search.cpp
-//  ChessGameA
+//  TreeSearch.cpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 16/06/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
@@ -10,6 +10,7 @@
 #include "NaiveChessPosition.hpp"
 #include <iostream>
 #include <sstream>
+
 namespace chs {
     int NaiveChessPosition::moveHeuristic() const {
         assert(pieces[black][king] or pieces[white][king]);
@@ -73,5 +74,4 @@ namespace chs {
         assert(*this==copy);
         return {value,complete};
     }
-    
 }

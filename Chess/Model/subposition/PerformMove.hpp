@@ -1,13 +1,13 @@
 //
-//  perform.hpp
-//  Chess_Engine
+//  PerformMove.hpp
+//  Chess
 //
 //  Created by Frederick Benjamin Woodruff on 30/03/2019.
 //  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
 //
 
-#ifndef perform_hpp
-#define perform_hpp
+#ifndef PerformMove_hpp
+#define PerformMove_hpp
 
 #include <stdio.h>
 #include "Bitboard.hpp"
@@ -175,9 +175,6 @@ namespace  chs {
         position_.totalOccupancy = position_.occupancy;
         position_.turn=~position_.turn;
     }
-
-    
-    
 }
 
-#endif /* perform_hpp */
+#endif /* PerformMove_hpp */

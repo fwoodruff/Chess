@@ -1,9 +1,13 @@
+//
+//  VectorStack.hpp
+//  Chess
+//
+//  Created by Frederick Benjamin Woodruff on 12/06/2019.
+//  Copyright © 2019 Frederick Benjamin Woodruff. All rights reserved.
+//
 
-
-#ifndef list_stack_hpp
-#define list_stack_hpp
-
-#include <cstddef>
+#ifndef VectorStack_hpp
+#define VectorStack_hpp
 
 
 template <typename T>
@@ -46,4 +50,4 @@ public:
     }
 };
 
-#endif /* list_stack_hpp */
+#endif /* VectorStack_hpp */

@@ -5,21 +5,15 @@
 
 - (void)viewDidLoad {
     const CGFloat square_size = 60;
-    
-    
     [super viewDidLoad];
     self.skView = (SKView *)self.view;
-    
     [self.skView setFrame:NSMakeRect(0, 0,square_size*10, square_size*10.2)];
-    
     //[self.skView setFrameOrigin:NSMakePoint(0, 0)];
     GameScene *scene = [[GameScene alloc]
                         initWithSize:CGSizeMake(self.skView.bounds.size.width,
                                                 self.skView.bounds.size.height)];
     scene.scaleMode = SKSceneScaleModeAspectFit;
-    
     [self.skView presentScene:scene];
-    
     //self.skView.showsFPS = YES;
     //self.skView.showsNodeCount = YES;
 }

@@ -128,7 +128,7 @@
 				6670A75322779C7A00DA1B90 /* Data */,
 				6670A75422779C8B00DA1B90 /* Model */,
 				6670A75622779CAA00DA1B90 /* Controller */,
-				6670A75722779CBE00DA1B90 /* Interface */,
+				6670A75722779CBE00DA1B90 /* View */,
 				6670A72F22779C3400DA1B90 /* main.m */,
 				6670A72E22779C3400DA1B90 /* Info.plist */,
 				6670A72B22779C3400DA1B90 /* Main.storyboard */,
@@ -183,7 +183,7 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		6670A75722779CBE00DA1B90 /* Interface */ = {
+		6670A75722779CBE00DA1B90 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				6670A72622779C3200DA1B90 /* ViewController.h */,
@@ -193,7 +193,7 @@
 				6670A71D22779C3200DA1B90 /* AppDelegate.m */,
 				6670A71C22779C3200DA1B90 /* AppDelegate.h */,
 			);
-			path = Interface;
+			path = View;
 			sourceTree = "<group>";
 		};
 		6670A75822779CCD00DA1B90 /* images */ = {

@@ -35,6 +35,7 @@
 		6670A7C822B5BA0F00DA1B90 /* TreeSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A7C722B5BA0F00DA1B90 /* TreeSearch.cpp */; };
 		6694EB7622BABF4C00F040C4 /* ChessBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6694EB7422BABF4C00F040C4 /* ChessBoard.cpp */; };
 		6694EB8022BB604C00F040C4 /* LabelledPieces.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6694EB7E22BB604C00F040C4 /* LabelledPieces.cpp */; };
+		66A194722305F0A200E487AB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 66A194712305F0A200E487AB /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		6694EB7522BABF4C00F040C4 /* ChessBoard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ChessBoard.hpp; sourceTree = "<group>"; };
 		6694EB7E22BB604C00F040C4 /* LabelledPieces.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LabelledPieces.cpp; sourceTree = "<group>"; };
 		6694EB7F22BB604C00F040C4 /* LabelledPieces.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LabelledPieces.hpp; sourceTree = "<group>"; };
+		66A194712305F0A200E487AB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		66AA07CE22E881370077C9C3 /* PerformMove.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PerformMove.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +167,7 @@
 				6670A75622779CAA00DA1B90 /* Controller */,
 				6670A75722779CBE00DA1B90 /* Interface */,
 				6670A72F22779C3400DA1B90 /* main.m */,
+				66A194712305F0A200E487AB /* README.md */,
 				6670A72E22779C3400DA1B90 /* Info.plist */,
 				6670A72B22779C3400DA1B90 /* Main.storyboard */,
 				6670A73122779C3400DA1B90 /* Chess.entitlements */,
@@ -390,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A194722305F0A200E487AB /* README.md in Resources */,
 				6670A78F2277A02300DA1B90 /* white_bishop.png in Resources */,
 				6670A78B2277A02300DA1B90 /* black_king.png in Resources */,
 				6670A78A2277A02300DA1B90 /* white_queen.png in Resources */,

@@ -160,7 +160,7 @@ namespace chs {
         for(const auto& move : movelist) {
             if(stateDidChange.load(/*std::memory_order_acquire*/)) return c_nullQMove;
             if(move==c_takeDrawMove) {
-                if(best_score.value_ < 0 != (turn==white)) {
+                if(best_score.value_ < 0 == (turn==white)) {
                     best_move = move;
                     best_score = {0,true};
                 }
@@ -171,9 +171,9 @@ namespace chs {
             
             //MoveList ml(&((*memory)[0]));
             MoveList ml(memory);
-            auto score = alphaBeta<e_moveType::all>(ml,depth, -100'000, 100'000,stateDidChange, turn!=e_colour::white);
+            auto score = alphaBeta<e_moveType::all>(ml,depth, -100'000, 100'000,stateDidChange, turn==e_colour::white);
             
-            if(score.value_ > best_score.value_ != (turn==white)) {
+            if(score.value_ > best_score.value_ == (turn==white)) {
                 best_move = move;
                 best_score = score;
             }
@@ -218,7 +218,7 @@ namespace chs {
             MoveList ml(memory);
             auto score = alphaBetaDebug(ml,depth, -100'000, 100'000,stateDidChange, turn==e_colour::white);
             
-            if(score.value_ > best_score.value_ != (turn==white)) {
+            if(score.value_ > best_score.value_ == (turn==white)) {
                 best_move = move;
                 best_score = score;
             }

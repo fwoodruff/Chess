@@ -33,35 +33,23 @@ namespace chs {
     struct Move;
     
     struct ChessPosition final : private NaiveChessPosition {
-    public:
-        
     private:
-        
-        int ruleOfFifty_; // need rule of 75
+        int ruleOfFifty_;
         bool hasInsufficientMaterial() const noexcept;
-        //bool hasNoLegalMoves() noexcept;
-        //int pieceHeuristic() const;
-        
         [[nodiscard]] QMove pickMove(int depth, const ChessBoard::map& history, std::atomic<bool>& stateDidChange);
         [[nodiscard]] QMove pickMoveDebug(int depth, const ChessBoard::map& history, std::atomic<bool>& stateDidChange);
-        
     public:
-        
-        
         [[nodiscard]] QMove pick_response(const int depth, Move move ,
                                          const ChessBoard::map& history, std::atomic<bool>& stateDidChange) const;
         [[nodiscard]] QMove pick_response_Debug(const int depth, Move move ,
                                          const ChessBoard::map& history, std::atomic<bool>& stateDidChange) const;
         
         [[nodiscard]] ChessPosition performMove(Move,const ChessBoard::map&) const noexcept;
-        
         e_gameState gameState_;
         //using NaiveChessPosition::getMoveList;
         [[nodiscard]] std::vector<Move> makeMoveList(const map&) const; // const?
         //[[nodiscard]] static ChessPosition makePosition() noexcept;
-        
         ChessPosition() noexcept;
-        
         std::string drawBoard() const;
         [[nodiscard]] inline e_colour getTurn() const noexcept {return turn;};
         [[nodiscard]] inline ChessBoard slice() const noexcept { return static_cast<ChessBoard>(*this); }

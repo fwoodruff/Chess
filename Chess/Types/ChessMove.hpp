@@ -50,6 +50,7 @@ namespace chs {
         [[nodiscard]] constexpr inline bool operator==(const Move& other) const noexcept { return repr_==other.repr_; }
         [[nodiscard]] constexpr inline bool operator!=(const Move& other) const noexcept { return repr_!=other.repr_; }
         friend size_t std::hash<Move>::operator() (const Move&) const;
+        [[nodiscard]] constexpr inline bool wasQuiet() const;
         constexpr Move():repr_(0) {};
         friend QMove;
     };
@@ -65,6 +66,8 @@ namespace chs {
         [[nodiscard]] constexpr inline Move get_move() const;
         [[nodiscard]] constexpr inline unsigned getQuality() const;
     };
+    
+    
     
     constexpr Move::Move(e_boardSquare start, e_boardSquare end, e_pieceType thisPiece, e_flagType flagType):
     repr_(start |  end << 6  |  thisPiece << 12 | flagType << 15) {}
@@ -88,6 +91,11 @@ namespace chs {
     }
     constexpr e_boardSquare Move::startSquare() const {
         return e_boardSquare(repr_ & 0b111111);
+    }
+    
+    constexpr bool Move::wasQuiet() const {
+        e_flagType flag = e_flagType(repr_ >> 15 & 0b1111);
+        return (flag==normalMove or flag==pawnDouble or flag==OO or flag==OOO);
     }
     
     template<e_colour colour> constexpr auto queensideCastle = 0;

@@ -21,8 +21,6 @@
 namespace chs {
 
     enum struct e_legality {legal, illegal, promotion};
-    
-    
 
     enum struct e_UIstates {
         dormantAreaPressedWhileClear,

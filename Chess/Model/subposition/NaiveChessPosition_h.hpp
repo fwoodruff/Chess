@@ -49,15 +49,12 @@ namespace chs {
         void populatePieceMoves(MoveList& moveList, e_boardSquare  = a8) const noexcept;
         std::array<Bitboard,2> occupancy;
         Bitboard totalOccupancy;
+        [[nodiscard]] int quiessence(const MoveList&, int a, int b, std::atomic<bool>&) noexcept;
     protected:
-        
-        
         bool isUnderAttack(e_colour,e_boardSquare) const;
         template<e_moveType moveType>
         [[nodiscard]] Score alphaBeta(const MoveList&, const int d, int a, int b,
                       std::atomic<bool>&, bool max,int p=0, e_boardSquare = a8) noexcept;
-        
-        
         [[nodiscard]] Score alphaBetaDebug(const MoveList&, const int d, int a, int b,
                            std::atomic<bool>&, bool max,int p=0, e_boardSquare = a8) noexcept;
         bool hasInsufficientMaterial() const noexcept;

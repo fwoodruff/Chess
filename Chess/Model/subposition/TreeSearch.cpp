@@ -10,7 +10,6 @@
 #include "NaiveChessPosition.hpp"
 #include <iostream>
 #include <sstream>
-
 namespace chs {
     int NaiveChessPosition::moveHeuristic() const {
         assert(pieces[black][king] or pieces[white][king]);
@@ -46,14 +45,16 @@ namespace chs {
                                            std::atomic<bool>& state_did_change, bool maximising_player,int parent_score, e_boardSquare bsq) noexcept {
         auto copy = *this; // debug only
         if(state_did_change.load(std::memory_order_acquire)) { return {0,0}; }
-        if(depth == 0 ) {
-            return { heuristic<e_moveType::all>(parent_score),false};
-        }
         if(!pieces[e_colour::white][e_pieceType::king] or !pieces[e_colour::black][e_pieceType::king]) {
             return { heuristic<e_moveType::all>(parent_score),true };
         }
         auto movelist =  oldList.nextVector();
-        int value = maximising_player? -100'000 : 100'000;
+        if(depth == 0 ) {
+            //int pieceScore = quiessence(movelist, alpha, beta, state_did_change);
+            return  {heuristic<e_moveType::all>(parent_score),false};
+        }
+        
+        int value = maximising_player? 100'000 : -100'000;
         getMoveList<e_moveType::all>(movelist,depth-1,maximising_player);
         if(movelist.empty()) return {heuristic<e_moveType::all>(parent_score),true};
         bool complete = true;
@@ -62,16 +63,44 @@ namespace chs {
             auto _= ConsiderMove<e_moveType::all>(*this, move);
             auto score = alphaBetaDebug(movelist,depth-1, alpha, beta,state_did_change, !maximising_player,parent_score,bsq);
             if(!score.complete_) complete = false;
-            if(maximising_player) {
+            if(!maximising_player) {
                 value = std::max(value,score.value_);
                 alpha = std::max(alpha, value);
             } else {
                 value = std::min(value,score.value_);
                 beta = std::min(beta,value);
             }
+
             if(alpha>=beta) break;
         }
         assert(*this==copy);
         return {value,complete};
+    }
+    
+    int NaiveChessPosition::quiessence(const MoveList& oldList, int alpha, int beta,
+                                       std::atomic<bool>& state_did_change) noexcept {
+        
+        if(state_did_change.load(std::memory_order_acquire)) { return 0; }
+        if(!pieces[e_colour::white][e_pieceType::king] or !pieces[e_colour::black][e_pieceType::king]) {
+            return heuristic<e_moveType::all>(0);
+        }
+        int stand_pat =  heuristic<e_moveType::materialChanging>(0);
+        if( stand_pat >= beta )
+            return beta;
+        if( alpha < stand_pat )
+            alpha = stand_pat;
+        
+        auto movelist =  oldList.nextVector();
+        getMoveList<e_moveType::all>(movelist,false);
+        for (const auto& move : movelist) {
+            if(state_did_change.load(std::memory_order_acquire)) { return 0; }
+            auto _= ConsiderMove<e_moveType::materialChanging>(*this, move);
+            auto score = -quiessence(movelist, -beta, -alpha, state_did_change );
+            if( score >= beta )
+                return beta;
+            if( score > alpha )
+                alpha = score;
+        }
+        return alpha;
     }
 }

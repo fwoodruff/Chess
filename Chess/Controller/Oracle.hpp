@@ -69,8 +69,8 @@ namespace frd {
         unsigned long const hardware_threads=std::thread::hardware_concurrency();
         
         long x = hardware_threads?hardware_threads:2;
-        unsigned long const thread_count = (x < 4) ? 2 : x-2;
-        //unsigned long const thread_count = 1;
+        //unsigned long const thread_count = (x < 4) ? 2 : x-2;
+        unsigned long const thread_count = 1;
         std::vector<std::thread> threads;
         
         void prepareResponse() {
@@ -152,7 +152,7 @@ namespace frd {
                     counter.store(0,std::memory_order_relaxed);
                 }
                 wait_slow.store(false,std::memory_order_relaxed);
-                wait_fast.store(false);
+                wait_fast.store(!N_inputs);
             }
             new_state.notify_all();
         }
@@ -179,7 +179,7 @@ namespace frd {
             max_counter = N_inputs*maxDifficulty_;
             for(int i = 0; i < N_inputs; i++)  map_.insert(std::pair(inputs_[i],i));
             counter.store(0);
-            wait_fast.store(false);
+            wait_fast.store(!N_inputs);
             wait_slow.store(false);
             terminate_fast.store(false);
             

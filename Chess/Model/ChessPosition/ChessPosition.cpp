@@ -117,33 +117,26 @@ namespace chs {
         
         auto positionCopy = *this;
         if(positionCopy.gameState_ != e_gameState::ongoing) return std::vector<Move>();
-        bool draw_claimable = positionCopy.ruleOfFifty_>50;
+        bool draw_claimable = positionCopy.ruleOfFifty_>100;
         Move memory[c_maxMoves];
         MoveList ml_in(memory);
         std::vector<Move> ml_out;
         positionCopy.getMoveList<e_moveType::all>(ml_in, false);
-
         for(int i=0;i<ml_in.size();i++) {
             auto _= ConsiderMove<e_moveType::all>(positionCopy,ml_in[i]);
             auto kings = positionCopy.pieces[~positionCopy.turn][e_pieceType::king];
-            
             if(history.find(positionCopy) != history.end())
                 if(history.at(positionCopy)>2)
                     draw_claimable = true;
-            
-            if(!positionCopy.isUnderAttack(~positionCopy.turn,std::move(kings).LSB_yield())) {
+            if(!positionCopy.isUnderAttack(~positionCopy.turn,std::move(kings).LSB_yield()))
                 ml_out.push_back(ml_in[i]);
-            }
         }
-        if(history.find(positionCopy) != history.end()) {
-            if(history.at(positionCopy)>2) {
+        if(history.find(positionCopy) != history.end())
+            if(history.at(positionCopy)>2)
                 draw_claimable = true;
-            }
-        }
         if(ml_out.size()!=0) {
-            if(draw_claimable) {
+            if(draw_claimable)
                 ml_out.push_back(c_takeDrawMove);
-            }
             ml_out.push_back(c_resignMove);
         }
         return ml_out;
@@ -172,8 +165,7 @@ namespace chs {
             //MoveList ml(&((*memory)[0]));
             MoveList ml(memory);
             auto score = alphaBeta<e_moveType::all>(ml,depth, -100'000, 100'000,stateDidChange, turn==e_colour::white);
-            
-            if(score.value_ > best_score.value_ == (turn==white)) {
+            if(score.value_ < best_score.value_ != (turn==white)) {
                 best_move = move;
                 best_score = score;
             }
@@ -216,9 +208,9 @@ namespace chs {
             
             //MoveList ml(&((*memory)[0]));
             MoveList ml(memory);
-            auto score = alphaBetaDebug(ml,depth, -100'000, 100'000,stateDidChange, turn==e_colour::white);
+            auto score = alphaBetaDebug(ml,depth, -100'000, 100'000,stateDidChange, turn!=e_colour::white);
             
-            if(score.value_ > best_score.value_ == (turn==white)) {
+            if(score.value_ > best_score.value_ != (turn==white)) {
                 best_move = move;
                 best_score = score;
             }

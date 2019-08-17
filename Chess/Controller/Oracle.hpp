@@ -69,8 +69,8 @@ namespace frd {
         unsigned long const hardware_threads=std::thread::hardware_concurrency();
         
         long x = hardware_threads?hardware_threads:2;
-        //unsigned long const thread_count = (x < 4) ? 2 : x-2;
-        unsigned long const thread_count = 1;
+        unsigned long const thread_count = (x < 4) ? 2 : x-2;
+        //unsigned long const thread_count = 1;
         std::vector<std::thread> threads;
         
         void prepareResponse() {

@@ -55,13 +55,18 @@ namespace chs {
         }
         
         int value = maximising_player? 100'000 : -100'000;
+        if(depth < 10) getMoveList<e_moveType::materialChanging>(movelist,depth-1,maximising_player); // awful hack
+        else getMoveList<e_moveType::all>(movelist,depth-1,maximising_player);
         getMoveList<e_moveType::all>(movelist,depth-1,maximising_player);
         if(movelist.empty()) return {heuristic<e_moveType::all>(parent_score),true};
         bool complete = true;
         for (const auto& move : movelist) {
             if(state_did_change.load(std::memory_order_acquire)) { return {0,0}; }
+            auto before = this->drawBoard();
             auto _= ConsiderMove<e_moveType::all>(*this, move);
-            auto score = alphaBetaDebug(movelist,depth-1, alpha, beta,state_did_change, !maximising_player,parent_score,bsq);
+            Score score;
+            score = alphaBetaDebug(movelist,depth-1, alpha, beta,state_did_change,
+                                   !maximising_player,parent_score,bsq);
             if(!score.complete_) complete = false;
             if(!maximising_player) {
                 value = std::max(value,score.value_);
@@ -75,32 +80,5 @@ namespace chs {
         }
         assert(*this==copy);
         return {value,complete};
-    }
-    
-    int NaiveChessPosition::quiessence(const MoveList& oldList, int alpha, int beta,
-                                       std::atomic<bool>& state_did_change) noexcept {
-        
-        if(state_did_change.load(std::memory_order_acquire)) { return 0; }
-        if(!pieces[e_colour::white][e_pieceType::king] or !pieces[e_colour::black][e_pieceType::king]) {
-            return heuristic<e_moveType::all>(0);
-        }
-        int stand_pat =  heuristic<e_moveType::materialChanging>(0);
-        if( stand_pat >= beta )
-            return beta;
-        if( alpha < stand_pat )
-            alpha = stand_pat;
-        
-        auto movelist =  oldList.nextVector();
-        getMoveList<e_moveType::all>(movelist,false);
-        for (const auto& move : movelist) {
-            if(state_did_change.load(std::memory_order_acquire)) { return 0; }
-            auto _= ConsiderMove<e_moveType::materialChanging>(*this, move);
-            auto score = -quiessence(movelist, -beta, -alpha, state_did_change );
-            if( score >= beta )
-                return beta;
-            if( score > alpha )
-                alpha = score;
-        }
-        return alpha;
     }
 }

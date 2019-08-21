@@ -37,7 +37,7 @@ namespace frd {
     struct Oracle {
     private:
 
-        using ThisType = Oracle<State,maxChoices,Decision,Response>;
+        using ThisType = Oracle<State,maxChoices,Decision,Response>; // using thisT = decltype(this*);
         
         using fp_findMapping = Response (State::*)(int,Decision,std::atomic<bool>&) const;
         using fp_getInputs =  const std::vector<Decision>& (State::*)() const;

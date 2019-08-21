@@ -124,6 +124,7 @@ namespace frd {
                         prepareResponse();
                     }
                 }
+                // std::this_thread::yield();
                 {std::unique_lock lk(mut);
                     new_state.wait(lk, [this]{
                         return !wait_fast.load() and !wait_slow.load() ;

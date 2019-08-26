@@ -73,7 +73,7 @@ namespace chs {
                             auto vec = game_.getPieceList().moving_;
                             movers_.insert( movers_.end(), vec.begin(), vec.end() );
                         });
-                        break;
+                        break; // +[]{} instead of []{} when passing reference to lambda?
                     }
                 }
             }

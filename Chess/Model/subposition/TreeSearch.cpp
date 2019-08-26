@@ -63,6 +63,9 @@ namespace chs {
         for (const auto& move : movelist) {
             if(state_did_change.load(std::memory_order_acquire)) { return {0,0}; }
             auto before = this->drawBoard();
+            // check if depth is 1 and then if move is quiet so standpat calculated
+            // before move is executed.
+            // also make a constexpr function that bitshifts an enum for fast move comparisons
             auto _= ConsiderMove<e_moveType::all>(*this, move);
             Score score;
             score = alphaBetaDebug(movelist,depth-1, alpha, beta,state_did_change,

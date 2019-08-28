@@ -58,7 +58,7 @@ namespace chs {
         [[nodiscard]] constexpr inline e_boardSquare LSB_yield() const && noexcept;
         constexpr inline e_boardSquare LSB_yield() & noexcept;
         constexpr inline e_boardSquare& LSByield(e_boardSquare& cumul) & noexcept;
-        [[nodiscard]] constexpr int occupancy() const noexcept;
+        [[nodiscard]] constexpr inline int occupancy() const noexcept;
         std::string draw() const noexcept;
         friend class MagicNumber;
         friend size_t std::hash<Bitboard>::operator() (const Bitboard&) const;

@@ -12,6 +12,7 @@
 #include "Bitboard_h.hpp"
 #include <type_traits>
 #include <cstddef>
+#include <iostream>
 
 namespace chs {
 
@@ -43,25 +44,29 @@ namespace chs {
 
     constexpr inline auto Bitboard::LSB() const {
         static_assert(uint64_t(-1)==UINT64_MAX, "twos complement not supported");
-        //return __builtin_clzll(repr_);
-        constexpr uint64_t bitscan_magic = 0x07edd5e59a4e28c2;
+        #ifdef __GNUC__
+        return __builtin_ctzll(repr_);
+        #else
+        constexpr const uint64_t bitscan_magic = 0x07edd5e59a4e28c2;
         return []() constexpr {
             std::array<int, c_maxSquare> result = {0};
             uint64_t bit=1; int i=0;
             do { result [(bit*bitscan_magic)>>58]=i; i++; bit<<=1; } while(bit);
             return result;
         }()[((repr_&-repr_)*bitscan_magic)>>58];
+        #endif // __GNUC__
     }
 
     constexpr inline int Bitboard::occupancy() const noexcept {
-        //return __builtin_popcountll(repr_);
-        auto x = repr_;
-        constexpr uint64_t threeeee  = 0x3333333333333333;
-        x -= (x >> 1) & 0x5555555555555555;
-        x = (x & threeeee) + ((x >> 2) & threeeee);
+        #ifdef __GNUC__
+        return __builtin_popcountll(repr_);
+        #else
+        constexpr uint64_t three64  = 0x3333333333333333;
+        auto x =-( (repr_ >> 1) & 0x5555555555555555);
+        x = (x & three64) + ((x >> 2) & three64);
         x = (x + (x >> 4)) & 0x0f0f0f0f0f0f0f0f;
         return (x * 0x0101010101010101) >> 56;
-        
+        #endif // __GNUC__
     }
 
     constexpr inline Bitboard& Bitboard::operator|=(const Bitboard& rhs) noexcept { repr_ |= rhs.repr_; return *this; }

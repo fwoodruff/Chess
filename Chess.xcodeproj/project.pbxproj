@@ -490,6 +490,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = "-mavx2";
 				PRODUCT_BUNDLE_IDENTIFIER = FreddieWoodruff.Chess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -510,8 +512,11 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = "-mavx2";
 				PRODUCT_BUNDLE_IDENTIFIER = FreddieWoodruff.Chess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIPFLAGS = "";
 			};
 			name = Release;
 		};

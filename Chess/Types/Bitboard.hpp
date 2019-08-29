@@ -44,6 +44,7 @@ namespace chs {
 
     constexpr inline auto Bitboard::LSB() const {
         static_assert(uint64_t(-1)==UINT64_MAX, "twos complement not supported");
+        // move static_assert inside ifdef and also assert size of long long = 8
         #ifdef __GNUC__
         return __builtin_ctzll(repr_);
         #else

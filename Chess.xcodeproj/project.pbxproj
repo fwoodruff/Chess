@@ -38,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		662AD60C231C1BDA00DBEBCC /* AVXfunctions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AVXfunctions.hpp; sourceTree = "<group>"; };
 		6670A71922779C3200DA1B90 /* Chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6670A71C22779C3200DA1B90 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6670A71D22779C3200DA1B90 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -104,6 +105,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		665BF587231A8A1700736B09 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				6670A76B22779EBD00DA1B90 /* VectorStack.hpp */,
+				6670A76122779E2F00DA1B90 /* Oracle.hpp */,
+				662AD60C231C1BDA00DBEBCC /* AVXfunctions.hpp */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
 		6670A71022779C3200DA1B90 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +135,7 @@
 		6670A71B22779C3200DA1B90 /* Chess */ = {
 			isa = PBXGroup;
 			children = (
+				665BF587231A8A1700736B09 /* Templates */,
 				6670A75522779CA100DA1B90 /* Types */,
 				6670A75322779C7A00DA1B90 /* Data */,
 				6670A75422779C8B00DA1B90 /* Model */,
@@ -178,7 +190,6 @@
 			children = (
 				6670A76222779E4A00DA1B90 /* ChessController.cpp */,
 				6670A76322779E4A00DA1B90 /* ChessController.hpp */,
-				6670A76122779E2F00DA1B90 /* Oracle.hpp */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,7 +235,6 @@
 				6670A79822B1466000DA1B90 /* Movelist.hpp */,
 				66AA07CE22E881370077C9C3 /* PerformMove.hpp */,
 				6670A79722B1466000DA1B90 /* Movelist.cpp */,
-				6670A76B22779EBD00DA1B90 /* VectorStack.hpp */,
 				6670A79B22B147F900DA1B90 /* TreeSearch.hpp */,
 				6670A7C722B5BA0F00DA1B90 /* TreeSearch.cpp */,
 			);
@@ -483,17 +493,21 @@
 				CODE_SIGN_ENTITLEMENTS = Chess/Chess.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_UNROLL_LOOPS = NO;
+				GCC_FAST_MATH = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_PEDANTIC = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Chess/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				OTHER_CFLAGS = "";
+				LLVM_LTO = NO;
+				OTHER_CFLAGS = "-mavx2";
 				OTHER_CPLUSPLUSFLAGS = "-mavx2";
 				PRODUCT_BUNDLE_IDENTIFIER = FreddieWoodruff.Chess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_PNG_TEXT = NO;
 			};
 			name = Debug;
 		};
@@ -502,21 +516,27 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_ENTITLEMENTS = Chess/Chess.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_UNROLL_LOOPS = NO;
+				COMPRESS_PNG_FILES = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_FAST_MATH = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Chess/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				OTHER_CFLAGS = "";
+				LLVM_LTO = YES;
+				OTHER_CFLAGS = "-mavx2";
 				OTHER_CPLUSPLUSFLAGS = "-mavx2";
 				PRODUCT_BUNDLE_IDENTIFIER = FreddieWoodruff.Chess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIPFLAGS = "";
+				STRIP_PNG_TEXT = YES;
 			};
 			name = Release;
 		};

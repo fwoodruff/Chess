@@ -13,6 +13,7 @@
 #include <type_traits>
 #include <cstddef>
 #include <iostream>
+#include <bitset>
 
 namespace chs {
 
@@ -43,24 +44,27 @@ namespace chs {
     repr_(Bitboard(first).repr_ | Bitboard(args...).repr_) {}
 
     constexpr inline auto Bitboard::LSB() const {
-        static_assert(uint64_t(-1)==UINT64_MAX, "twos complement not supported");
-        #ifdef __GNUC__
+        #ifndef __GNUC__
         return __builtin_ctzll(repr_);
         #else
+        static_assert(uint64_t(-1)==UINT64_MAX, "twos complement not supported");
         constexpr const uint64_t bitscan_magic = 0x07edd5e59a4e28c2;
-        return []() constexpr {
+        constexpr const auto x = []() constexpr {
             std::array<int, c_maxSquare> result = {0};
             uint64_t bit=1; int i=0;
             do { result [(bit*bitscan_magic)>>58]=i; i++; bit<<=1; } while(bit);
             return result;
-        }()[((repr_&-repr_)*bitscan_magic)>>58];
+        }();
+        return x[((repr_&-repr_)*bitscan_magic)>>58];
         #endif // __GNUC__
     }
 
     constexpr inline int Bitboard::occupancy() const noexcept {
+        
+        //return int(std::bitset<c_maxSquare>(repr_).count());
         #ifdef __GNUC__
         return __builtin_popcountll(repr_);
-        #else
+        #else // bug here
         constexpr uint64_t three64  = 0x3333333333333333;
         auto x =-( (repr_ >> 1) & 0x5555555555555555);
         x = (x & three64) + ((x >> 2) & three64);

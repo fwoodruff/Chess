@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include "NaiveChessPosition.hpp"
+#include "AVXfunctions.hpp"
 #include <iostream>
 #include <sstream>
 namespace chs {
@@ -29,16 +30,32 @@ namespace chs {
 
     int NaiveChessPosition::pieceHeuristic() const {
         assert(pieces[black][king] or pieces[white][king]);
-        int score = 0;
-        for(int col=0;col<2;col++) {
-            const int addsub[] = {1,-1};
-            score += addsub[col]*30*pieces[col][bishop].occupancy();
-            score += addsub[col]*50*pieces[col][rook].occupancy();
-            score += addsub[col]*90*pieces[col][queen].occupancy();
-            score += addsub[col]*10*pieces[col][pawn].occupancy();
-            score += addsub[col]*30*pieces[col][knight].occupancy();
+        
+        // measure whether this is actually faster
+        #ifdef __AVX2__
+        if constexpr(sizeof(pieces)==12*sizeof(pieces[0][0])) {
+            int64_t vals[] ={0,90,50,30,30,10,0,-90,-50,-30,-30,-10};
+            return dotpop(12,vals, &pieces[0][0].repr_);
         }
-        return score;
+        #else
+        {
+            int score = 0;
+            for(int col=0;col<2;col++) {
+                const int addsub[] = {1,-1};
+                score += addsub[col]*30*pieces[col][bishop].occupancy();
+                score += addsub[col]*50*pieces[col][rook].occupancy();
+                score += addsub[col]*90*pieces[col][queen].occupancy();
+                score += addsub[col]*10*pieces[col][pawn].occupancy();
+                score += addsub[col]*30*pieces[col][knight].occupancy();
+            }
+            return score;
+        }
+        #endif // __AVX2__
+        
+        
+        
+        // look into AVX FMA etc.
+        
     }
 
     Score NaiveChessPosition::alphaBetaDebug(const MoveList& oldList, const int depth, int alpha, int beta,

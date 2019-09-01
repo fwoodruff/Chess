@@ -26,7 +26,7 @@ namespace  chs {
         
         if constexpr (moveType == e_moveType::quiet) oldPosition_ = { moveBoard, unpackedMove.piece_};
         else oldPosition_ = p;
-        
+        // store move histories dynamically onto a VectorStack
         
         position_.pieces[position_.turn][unpackedMove.piece_] ^= moveBoard;
         

@@ -23,6 +23,7 @@ public:
 
 namespace chs {
     struct MagicNumber;
+    struct NaiveChessPosition;
     struct Bitboard final {
     private:
         uint64_t repr_;
@@ -60,6 +61,7 @@ namespace chs {
         constexpr inline e_boardSquare& LSByield(e_boardSquare& cumul) & noexcept;
         [[nodiscard]] constexpr inline int occupancy() const noexcept;
         std::string draw() const noexcept;
+        friend class NaiveChessPosition;
         friend class MagicNumber;
         friend size_t std::hash<Bitboard>::operator() (const Bitboard&) const;
     };

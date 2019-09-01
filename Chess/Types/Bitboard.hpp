@@ -59,8 +59,7 @@ namespace chs {
         #endif // __GNUC__
     }
 
-    constexpr inline int Bitboard::occupancy() const noexcept {
-        
+    constexpr int Bitboard::occupancy() const noexcept {
         //return int(std::bitset<c_maxSquare>(repr_).count());
         #ifdef __GNUC__
         return __builtin_popcountll(repr_);

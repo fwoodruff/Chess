@@ -13,7 +13,7 @@ Features:
 * Headers and #include directives
 
 * Constexpr collisionless hashtables for slider move lookups (hardcoded magics to keep compile times reasonable)
-* Bitwise operations and a basic awareness of X86 ABM, encapsulated into member functions
+* Bitwise and vector operations with X86 ABM and AVX2 options, encapsulated into member functions
 * Concurrency demonstrating usage of std::atomic<>, std::memory_order, std::condition_variable, and std::shared_lock
 
 * Templates and metaprogramming
@@ -24,6 +24,6 @@ Features:
 * Minimax based move search (evidence of work in progress for static exchange evaluation and quiescence searches).
 * Full chess rules including stalemates, castling, promotions to all piece types, en passant, insufficient material, 
 no castling through check, rule of three, fifty-move rule, and an undo function.
-* C++17 with awareness of opportunities for C++20 improvements (e.g. constexpr std::vector)
+* C++17 with awareness of opportunities for C++20 improvements (e.g. constexpr std::vector, std::popcount)
 
-I made a few design choices to teach myself some language technique or pattern, but where a simpler approach might have been more effective.
+Some design choices are to teach myself a language or hardware technique or pattern where a simpler approach would have been more effective.

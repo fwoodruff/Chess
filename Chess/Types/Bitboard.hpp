@@ -44,7 +44,7 @@ namespace chs {
     repr_(Bitboard(first).repr_ | Bitboard(args...).repr_) {}
 
     constexpr inline auto Bitboard::LSB() const {
-        #ifndef __GNUC__
+        #ifdef __GNUC__
         return __builtin_ctzll(repr_);
         #else
         static_assert(uint64_t(-1)==UINT64_MAX, "twos complement not supported");

@@ -17,6 +17,12 @@ inline int dotpop(int N, const int64_t* const x, const uint64_t* const y) {
     int cumul = 0;
     int n=0;
     for(;;) {
+/* 
+In caller have:
+ifdef __GNUC__
+uint64_t* __attribute__((__may_alias__)) p = reinterpret_cast<uint64_t*>(&
+*/
+
 #ifdef __AVX512__
         __m512i yv = _mm512_load_si512( (__m512i*) &(y[n]) );
         __m512i ypopv = _mm512_popcnt_epi64(yv);

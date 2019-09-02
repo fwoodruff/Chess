@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		662AD623231D883A00DBEBCC /* AVXfunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 662AD622231D883A00DBEBCC /* AVXfunctions.c */; settings = {COMPILER_FLAGS = "-mavx2"; }; };
 		6670A71E22779C3200DA1B90 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670A71D22779C3200DA1B90 /* AppDelegate.m */; };
 		6670A72522779C3200DA1B90 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6670A72422779C3200DA1B90 /* GameScene.mm */; };
 		6670A72822779C3200DA1B90 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670A72722779C3200DA1B90 /* ViewController.m */; };
@@ -32,13 +33,14 @@
 		6670A79522B1420900DA1B90 /* NaiveChessPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A79322B1420900DA1B90 /* NaiveChessPosition.cpp */; };
 		6670A79922B1466000DA1B90 /* Movelist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A79722B1466000DA1B90 /* Movelist.cpp */; };
 		6670A7AF22B52EA300DA1B90 /* ChessPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A7AD22B52EA300DA1B90 /* ChessPosition.cpp */; };
-		6670A7C822B5BA0F00DA1B90 /* TreeSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A7C722B5BA0F00DA1B90 /* TreeSearch.cpp */; };
+		6670A7C822B5BA0F00DA1B90 /* TreeSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A7C722B5BA0F00DA1B90 /* TreeSearch.cpp */; settings = {COMPILER_FLAGS = "-mavx2"; }; };
 		6694EB7622BABF4C00F040C4 /* ChessBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6694EB7422BABF4C00F040C4 /* ChessBoard.cpp */; };
 		6694EB8022BB604C00F040C4 /* LabelledPieces.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6694EB7E22BB604C00F040C4 /* LabelledPieces.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		662AD60C231C1BDA00DBEBCC /* AVXfunctions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AVXfunctions.hpp; sourceTree = "<group>"; };
+		662AD60C231C1BDA00DBEBCC /* AVXfunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVXfunctions.h; sourceTree = "<group>"; };
+		662AD622231D883A00DBEBCC /* AVXfunctions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = AVXfunctions.c; sourceTree = "<group>"; };
 		6670A71922779C3200DA1B90 /* Chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6670A71C22779C3200DA1B90 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6670A71D22779C3200DA1B90 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -110,7 +112,8 @@
 			children = (
 				6670A76B22779EBD00DA1B90 /* VectorStack.hpp */,
 				6670A76122779E2F00DA1B90 /* Oracle.hpp */,
-				662AD60C231C1BDA00DBEBCC /* AVXfunctions.hpp */,
+				662AD60C231C1BDA00DBEBCC /* AVXfunctions.h */,
+				662AD622231D883A00DBEBCC /* AVXfunctions.c */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				6694EB8022BB604C00F040C4 /* LabelledPieces.cpp in Sources */,
 				6670A7C822B5BA0F00DA1B90 /* TreeSearch.cpp in Sources */,
 				6694EB7622BABF4C00F040C4 /* ChessBoard.cpp in Sources */,
+				662AD623231D883A00DBEBCC /* AVXfunctions.c in Sources */,
 				6670A76A22779E9A00DA1B90 /* ChessGame.cpp in Sources */,
 				6670A76422779E4A00DA1B90 /* ChessController.cpp in Sources */,
 				6670A79522B1420900DA1B90 /* NaiveChessPosition.cpp in Sources */,
@@ -503,8 +507,8 @@
 					"@executable_path/../Frameworks",
 				);
 				LLVM_LTO = NO;
-				OTHER_CFLAGS = "-mavx2";
-				OTHER_CPLUSPLUSFLAGS = "-mavx2";
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = FreddieWoodruff.Chess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_PNG_TEXT = NO;
@@ -531,8 +535,8 @@
 					"@executable_path/../Frameworks",
 				);
 				LLVM_LTO = YES;
-				OTHER_CFLAGS = "-mavx2";
-				OTHER_CPLUSPLUSFLAGS = "-mavx2";
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = FreddieWoodruff.Chess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIPFLAGS = "";

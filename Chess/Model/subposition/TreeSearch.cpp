@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include "NaiveChessPosition.hpp"
-#include "AVXfunctions.hpp"
+#include "AVXfunctions.h"
 #include <iostream>
 #include <sstream>
 namespace chs {
@@ -34,7 +34,7 @@ namespace chs {
         // TODO: measure whether this is actually faster
         if constexpr(sizeof(pieces)==12*sizeof(pieces[0][0])) {
             int64_t vals[] ={0,90,50,30,30,10,0,-90,-50,-30,-30,-10};
-            return dotpop(12,vals, &pieces[0][0].repr_);
+            return frd::dotpop(12,vals, reinterpret_cast<const uint64_t*>(&pieces));
         }
         #else
         int score = 0;
@@ -48,11 +48,6 @@ namespace chs {
         }
         return score;
         #endif // __AVX2__
-        
-        
-        
-        // look into AVX FMA etc.
-        
     }
 
     Score NaiveChessPosition::alphaBetaDebug(const MoveList& oldList, const int depth, int alpha, int beta,

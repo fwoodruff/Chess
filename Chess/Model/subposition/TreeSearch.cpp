@@ -34,6 +34,7 @@ namespace chs {
         // TODO: measure whether this is actually faster
         if constexpr(sizeof(pieces)==12*sizeof(pieces[0][0])) {
             int64_t vals[] ={0,90,50,30,30,10,0,-90,-50,-30,-30,-10};
+            // use std::bit_cast for strict aliasing correctness
             return frd::dotpop(12,vals, reinterpret_cast<const uint64_t*>(&pieces));
         }
         #else

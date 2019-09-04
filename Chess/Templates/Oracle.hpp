@@ -120,11 +120,12 @@ namespace frd {
                 {
                     while(! wait_fast.load(std::memory_order_acquire) and
                           ! wait_slow.load(std::memory_order_acquire)) {
+                        std::this_thread::yield();
                         std::shared_lock lk(mut);
                         prepareResponse();
                     }
                 }
-                // std::this_thread::yield();
+                
                 {std::unique_lock lk(mut);
                     new_state.wait(lk, [this]{
                         return !wait_fast.load() and !wait_slow.load() ;

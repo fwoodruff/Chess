@@ -8,7 +8,8 @@
 
 #include <stdio.h>
 #include "NaiveChessPosition.hpp"
-#include "AVXfunctions.h"
+//#include "AVXfunctions.h"
+#include <immintrin.h>
 #include <iostream>
 #include <sstream>
 namespace chs {
@@ -30,25 +31,23 @@ namespace chs {
 
     int NaiveChessPosition::pieceHeuristic() const {
         assert(pieces[black][king] or pieces[white][king]);
-        #ifdef __AVX2__
-        // TODO: measure whether this is actually faster
-        if constexpr(sizeof(pieces)==12*sizeof(pieces[0][0])) {
-            int64_t vals[] ={0,90,50,30,30,10,0,-90,-50,-30,-30,-10};
-            // use std::bit_cast for strict aliasing correctness
-            return frd::dotpop(12,vals, reinterpret_cast<const uint64_t*>(&pieces));
-        }
-        #else
+        
+        
+        static const int16_t weights[16] ={90,50,30,30,10,-90,-50,-30,-30,-10,0,0,0,0,0,0};
+        int16_t occupancies[16];
         int score = 0;
-        for(int col=0;col<2;col++) {
-            const int addsub[] = {1,-1};
-            score += addsub[col]*30*pieces[col][bishop].occupancy();
-            score += addsub[col]*50*pieces[col][rook].occupancy();
-            score += addsub[col]*90*pieces[col][queen].occupancy();
-            score += addsub[col]*10*pieces[col][pawn].occupancy();
-            score += addsub[col]*30*pieces[col][knight].occupancy();
-        }
+        for (int i = 0; i < 2; i++) for(int j = 0; j < 5; j++)
+            occupancies[5*i+j] = pieces[i][j+1].occupancy();
+#ifdef __AVX2__
+        __m256i occupancyVector = _mm256_load_si256( (const __m256i*) occupancies );
+        __m256i   weightsVector = _mm256_load_si256( (const __m256i*) weights );
+        __m256i outvector = _mm256_mullo_epi16(weightsVector,occupancyVector);
+        int16_t *ptr = (int16_t*)&outvector;
+        for (int i = 0; i < 10; i++) score += ptr[i];
+#else
+        for (int i = 0; i < 10; i++) score += occupancies[i] * weights[i];
+#endif // AVX2
         return score;
-        #endif // __AVX2__
     }
 
     Score NaiveChessPosition::alphaBetaDebug(const MoveList& oldList, const int depth, int alpha, int beta,
@@ -63,9 +62,8 @@ namespace chs {
             //int pieceScore = quiessence(movelist, alpha, beta, state_did_change);
             return  {heuristic<e_moveType::all>(parent_score),false};
         }
-        
         int value = maximising_player? 100'000 : -100'000;
-        if(depth < 10) getMoveList<e_moveType::materialChanging>(movelist,depth-1,maximising_player); // awful hack
+        if(depth < 2) getMoveList<e_moveType::materialChanging>(movelist,depth-1,maximising_player); // awful hack
         else getMoveList<e_moveType::all>(movelist,depth-1,maximising_player);
         getMoveList<e_moveType::all>(movelist,depth-1,maximising_player);
         if(movelist.empty()) return {heuristic<e_moveType::all>(parent_score),true};

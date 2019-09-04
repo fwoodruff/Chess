@@ -14,6 +14,7 @@ extern "C" {
 
     namespace frd {
         int dotpop(int N, const int64_t* const x, const uint64_t* const y);
+        int dotpop12(const int64_t* const x, const uint64_t* const y);
     }
 
 #ifdef __cplusplus

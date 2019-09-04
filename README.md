@@ -1,2 +1,2 @@
 # EffectiveChess
-Keeping this up because it shows some awareness of Java's libraries after reading Effective Java by Joshua Bloch.
+Keeping this up because it shows some awareness of Java's libraries after reading Effective Java by Joshua Bloch although the program is broken and full of race conditions.

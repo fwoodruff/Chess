@@ -13,6 +13,11 @@
 #include <array>
 #include <stdio.h>
 
+/*
+Use an incremented mutable thread_local static int to periodically call
+std::this_thread::yield()
+*/
+
 namespace  chs {
 
     template<e_moveType move_type>

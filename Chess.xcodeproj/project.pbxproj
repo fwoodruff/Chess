@@ -13,7 +13,6 @@
 		6670A72822779C3200DA1B90 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670A72722779C3200DA1B90 /* ViewController.m */; };
 		6670A72D22779C3400DA1B90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6670A72B22779C3400DA1B90 /* Main.storyboard */; };
 		6670A73022779C3400DA1B90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6670A72F22779C3400DA1B90 /* main.m */; };
-		6670A75C22779D9700DA1B90 /* Bitboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A75A22779D9700DA1B90 /* Bitboard.cpp */; };
 		6670A76422779E4A00DA1B90 /* ChessController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A76222779E4A00DA1B90 /* ChessController.cpp */; };
 		6670A76A22779E9A00DA1B90 /* ChessGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A76822779E9A00DA1B90 /* ChessGame.cpp */; };
 		6670A77022779EE900DA1B90 /* DrawPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6670A76F22779EE900DA1B90 /* DrawPosition.cpp */; };
@@ -53,7 +52,6 @@
 		6670A72F22779C3400DA1B90 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6670A73122779C3400DA1B90 /* Chess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chess.entitlements; sourceTree = "<group>"; };
 		6670A75922779D7F00DA1B90 /* Bitboard_h.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Bitboard_h.hpp; path = Chess/Types/Bitboard_h.hpp; sourceTree = SOURCE_ROOT; };
-		6670A75A22779D9700DA1B90 /* Bitboard.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bitboard.cpp; sourceTree = "<group>"; };
 		6670A75B22779D9700DA1B90 /* Bitboard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Bitboard.hpp; sourceTree = "<group>"; };
 		6670A75E22779DB000DA1B90 /* PiecesAndSquares.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PiecesAndSquares.hpp; sourceTree = "<group>"; };
 		6670A76122779E2F00DA1B90 /* Oracle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Oracle.hpp; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				6694EB7422BABF4C00F040C4 /* ChessBoard.cpp */,
 				6670A75922779D7F00DA1B90 /* Bitboard_h.hpp */,
 				6670A75B22779D9700DA1B90 /* Bitboard.hpp */,
-				6670A75A22779D9700DA1B90 /* Bitboard.cpp */,
 				6670A77622779F7B00DA1B90 /* ChessMove.hpp */,
 				6670A77522779F7B00DA1B90 /* ChessMove.cpp */,
 				6670A75E22779DB000DA1B90 /* PiecesAndSquares.hpp */,
@@ -358,7 +355,6 @@
 				6670A79522B1420900DA1B90 /* NaiveChessPosition.cpp in Sources */,
 				6670A71E22779C3200DA1B90 /* AppDelegate.m in Sources */,
 				6670A77722779F7B00DA1B90 /* ChessMove.cpp in Sources */,
-				6670A75C22779D9700DA1B90 /* Bitboard.cpp in Sources */,
 				6670A77022779EE900DA1B90 /* DrawPosition.cpp in Sources */,
 				6670A7AF22B52EA300DA1B90 /* ChessPosition.cpp in Sources */,
 			);

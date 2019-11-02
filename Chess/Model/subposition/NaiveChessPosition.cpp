@@ -62,4 +62,8 @@ namespace chs {
             (pieces[i][bishop].occupancy()+pieces[i][knight].occupancy())<=1;
         return rp>1;
     }
+    
+    
+    
+    
 }

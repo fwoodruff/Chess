@@ -37,17 +37,20 @@ namespace chs {
     template<typename... T,typename Indices>
     constexpr Bitboard::Bitboard(std::tuple<T...> a) noexcept : repr_(tuple_to_bitboard(a, Indices{}).bb) {}
 
-
-
+    /*
+    template<typename... Args>
+    constexpr Bitboard::Bitboard(Args... args) noexcept : repr_(Bitboard(args...).repr_ | ...) {}
+    */
+    
     template<typename T,typename, typename... Args>
     constexpr Bitboard::Bitboard(T first, Args... args) noexcept :
     repr_(Bitboard(first).repr_ | Bitboard(args...).repr_) {}
-
+     
     constexpr inline auto Bitboard::LSB() const {
         #ifdef __GNUC__
         return __builtin_ctzll(repr_);
         #else
-        static_assert(uint64_t(-1)==UINT64_MAX, "twos complement not supported");
+        static_assert(uint64_t(-1)==UINT64_MAX);
         constexpr const uint64_t bitscan_magic = 0x07edd5e59a4e28c2;
         constexpr const auto x = []() constexpr {
             std::array<int, c_maxSquare> result = {0};
@@ -108,8 +111,23 @@ namespace chs {
     constexpr inline e_boardSquare Bitboard::LSB_yield() const && noexcept {
         return e_boardSquare(LSB());
     }
+    
+    std::string Bitboard::draw() const noexcept {
+        std::string s = "";
+        for(int rank=e_rank::rank8;rank<c_maxRank;rank++) {
+            s+="\n";
+            for(int file=e_file::fileA;file<c_maxFile;file++) {
+                if((repr_ & ( 1ULL << (8*rank+file) )) >> (8*rank+file)) s+=" #";
+                else s+=" .";
+            }
+        }
+        s+="\n";
+        return s;
+    }
+}
 
-
+inline size_t std::hash<chs::Bitboard>::operator() (const chs::Bitboard& bboard) const {
+    return std::hash<uint64_t>{}(bboard.repr_);
 }
 
 #endif /* bitboard_h */

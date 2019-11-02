@@ -54,8 +54,9 @@ namespace chs {
         
         inline ChessPosition& getPosition() {
             return const_cast<ChessPosition&>(std::as_const(*this).getPosition());
+            
         }
-        inline const std::vector<Move>& getMoveList() const { return historyMovelist_.top(); }
+        inline const std::vector<Move>& getMoveList() const { return historyMovelist_.top();}
         
         inline std::vector<Move>& getMoveList() {
             return const_cast<std::vector<Move>&>(std::as_const(*this).getMoveList());

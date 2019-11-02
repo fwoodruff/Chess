@@ -40,8 +40,15 @@ namespace chs {
         constexpr Bitboard(std::array<T,x> first) noexcept;
         template<typename... T, typename Indices = std::make_index_sequence<sizeof...(T)>>
         constexpr Bitboard(std::tuple<T...> a) noexcept;
+        
+        
         template<typename T, typename = typename std::enable_if_t<!std::is_same_v<T, int>>, typename... Args>
         constexpr Bitboard(T, Args...) noexcept;
+        
+        /*
+        template<typename... Args>
+        constexpr Bitboard(Args...) noexcept;
+        */
         constexpr inline explicit operator bool() const;
         constexpr inline Bitboard& operator|=(const Bitboard& rhs) noexcept;
         constexpr inline Bitboard& operator&=(const Bitboard& rhs) noexcept;
@@ -59,10 +66,12 @@ namespace chs {
         constexpr inline e_boardSquare LSB_yield() & noexcept;
         constexpr inline e_boardSquare& LSByield(e_boardSquare& cumul) & noexcept;
         [[nodiscard]] constexpr inline int occupancy() const noexcept;
-        std::string draw() const noexcept;
+        inline std::string draw() const noexcept;
         friend class MagicNumber;
-        friend size_t std::hash<Bitboard>::operator() (const Bitboard&) const;
+        friend inline size_t std::hash<Bitboard>::operator() (const Bitboard&) const;
     };
+    
+    
 
 }
 #endif /* Bitboard_h_hpp */

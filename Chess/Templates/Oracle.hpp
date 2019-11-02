@@ -143,6 +143,7 @@ namespace frd {
                 std::lock_guard lk(mut);
                 for(int i = 0; i<N_inputs; i++) outputs_[i].store(nullValue_,std::memory_order_relaxed);
                 map_.clear();
+                
                 updater();
                 if(p_state_->terminal()) {
                     terminate_fast.store(true,std::memory_order_relaxed);
@@ -196,8 +197,7 @@ namespace frd {
         Response operator()(const Decision& key) const {
             std::shared_lock lk(mut);
             auto x = map_.at(key);
-            const auto& out = outputs_[x].load();
-            if(out != nullValue_) {
+            if(auto out = outputs_[x].load(); out != nullValue_) {
                 return out;
             } else {
                 std::cerr << "bad move\n";

@@ -120,11 +120,11 @@ namespace chs {
     template <e_moveType move_type>
     NaiveChessPosition::ConsiderMove<move_type>::ConsiderMove(NaiveChessPosition& p,const Move& m) :
     ExecuteMove<move_type>(p,m) {
-        
-        
-        
+
         //assert(m!=nullMove and m!=c_resignMove and m!=c_takeDrawMove);
     }
+    
+    
     
 }
 

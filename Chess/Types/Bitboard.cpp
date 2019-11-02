@@ -10,25 +10,24 @@
 #include "PiecesAndSquares.hpp"
 #include <cstddef>
 
+/*
 size_t std::hash<chs::Bitboard>::operator() (const chs::Bitboard& bboard) const {
     return std::hash<uint64_t>{}(bboard.repr_);
-}
+}*/
 
 namespace chs {
+    /*
     std::string Bitboard::draw() const noexcept {
         std::string s = "";
         for(int rank=e_rank::rank8;rank<c_maxRank;rank++) {
             s+="\n";
             for(int file=e_file::fileA;file<c_maxFile;file++) {
-                uint64_t bit = (repr_ & ( 1ULL << (8*rank+file) )) >> (8*rank+file);
-                if(bit) {
-                    s+=" #";
-                } else {
-                    s+=" .";
-                }
+                if((repr_ & ( 1ULL << (8*rank+file) )) >> (8*rank+file)) s+=" #";
+                else s+=" .";
             }
         }
         s+="\n";
         return s;
     }
+     */
 }

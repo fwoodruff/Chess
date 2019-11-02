@@ -24,7 +24,7 @@ namespace  chs {
     Score NaiveChessPosition::alphaBeta(const MoveList& old_list, int depth, int alpha, int beta,
                                 std::atomic<bool>& state_did_change, bool maximising_player,
                                         int parent_score, e_boardSquare bsq) noexcept {
-        auto copy = *this;
+        [[maybe_unused]] auto copy = *this;
         if(state_did_change.load(std::memory_order_acquire)) { return {0,0}; }
         
         if(!pieces[e_colour::white][e_pieceType::king] or !pieces[e_colour::black][e_pieceType::king]) {
